@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    margin: 3.5rem 0 1.75rem;
+    margin: 1.75rem 0;
 
     > h2{
         border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
