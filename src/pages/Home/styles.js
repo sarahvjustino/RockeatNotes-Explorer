@@ -18,6 +18,19 @@ export const Container = styled.div`
 `;
 export const Brand = styled.div`
     grid-area: brand;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+
+    > h1{
+        font-size: 1.5rem;
+        color: ${({ theme }) => theme.COLORS.ORANGE};
+    }
 `;
 export const Search = styled.div`
     grid-area: search;
