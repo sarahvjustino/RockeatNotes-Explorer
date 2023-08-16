@@ -34,6 +34,8 @@ export const Brand = styled.div`
 `;
 export const Search = styled.div`
     grid-area: search;
+
+    padding: 4rem 4rem 0;
 `;
 export const Menu = styled.ul`
     grid-area: menu;

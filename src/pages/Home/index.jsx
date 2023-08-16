@@ -2,6 +2,7 @@ import { FiPlus } from "react-icons/fi";
 import { Container, Brand, Search, Menu, Content, NewNote } from "./styles";
 
 import { Header } from "../../components/header";
+import { Input } from "../../components/Input";
 import { ButtonText } from "../../components/ButtonText";
 
 export function Home() {
@@ -25,7 +26,9 @@ export function Home() {
           <ButtonText title="React" />
         </li>
       </Menu>
-      <Search></Search>
+      <Search>
+        <Input placeholder="Pesquisar pelo título" />
+      </Search>
       <Content></Content>
       <NewNote>
         <FiPlus />
