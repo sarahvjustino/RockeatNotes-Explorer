@@ -37,10 +37,19 @@ export const Search = styled.div`
 `;
 export const Menu = styled.ul`
     grid-area: menu;
+
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+    
+    padding-top : 4rem;
+    text-align: center;
+
+    > li{
+    margin-bottom: 1.5rem;
+}
 `;
 export const Content = styled.div`
-    grid-area: content;
+grid-area: content;
 `;
 export const NewNote = styled.button`
-    grid-area: newnote;
+grid-area: newnote;
 `;
