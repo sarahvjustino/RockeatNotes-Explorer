@@ -23,7 +23,7 @@ export const Brand = styled.div`
     justify-content: center;
     align-items: center;
 
-    border: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
+    border-bottom: 1px solid ${({ theme }) => theme.COLORS.BACKGROUND_700};
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
@@ -51,6 +51,9 @@ export const Menu = styled.ul`
 `;
 export const Content = styled.div`
     grid-area: content;
+
+    padding: 0 4rem;
+    overflow-y: auto;
 `;
 export const NewNote = styled.button`
     grid-area: newnote;
