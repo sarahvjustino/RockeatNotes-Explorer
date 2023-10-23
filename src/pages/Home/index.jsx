@@ -9,12 +9,21 @@ import { Input } from "../../components/Input";
 import { Note } from "../../components/Note";
 import { Section } from "../../components/Section";
 import { ButtonText } from "../../components/ButtonText";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
+  const [search, setSearch] = useState("");
   const [tags, setTags] = useState([]);
   const [tagsSelected, setTagsSelected] = useState([]);
+  const [notes, setNotes] = useState([]);
+
+  const navigate = useNavigate();
 
   function handleTagsSelected(tagName) {
+    if (tagName === "all") {
+      return setTagsSelected([]);
+    }
+
     const alreadySelected = tagsSelected.includes(tagName);
 
     if (alreadySelected) {
@@ -25,6 +34,10 @@ export function Home() {
     }
   }
 
+  function handleNoteDetails(id) {
+    navigate(`/details/${id}`);
+  }
+
   useEffect(() => {
     async function fetchTags() {
       const response = await api.get("/tags");
@@ -33,6 +46,17 @@ export function Home() {
 
     fetchTags();
   }, []);
+
+  useEffect(() => {
+    async function fetchNotes() {
+      const response = await api.get(
+        `/notes?title=${search}&tags=${tagsSelected}`
+      );
+      setNotes(response.data);
+    }
+
+    fetchNotes();
+  }, [tagsSelected, search]);
 
   return (
     <Container>
@@ -63,22 +87,22 @@ export function Home() {
           ))}
       </Menu>
       <Search>
-        <Input placeholder="Pesquisar pelo título" />
+        <Input
+          placeholder="Pesquisar pelo título"
+          onChange={(e) => {
+            setSearch(e.target.value);
+          }}
+        />
       </Search>
       <Content>
         <Section title="Minhas notas">
-          <Note
-            data={{ title: "React Modal", tags: [{ id: "1", name: "React" }] }}
-          />
-          <Note
-            data={{
-              title: "Exemplo de Middleware",
-              tags: [
-                { id: "1", name: "express" },
-                { id: "2", name: "nodejs" },
-              ],
-            }}
-          />
+          {notes.map((note) => (
+            <Note
+              key={String(note.id)}
+              data={note}
+              onClick={() => handleNoteDetails(note.id)}
+            />
+          ))}
         </Section>
       </Content>
       <NewNote to="/new">
