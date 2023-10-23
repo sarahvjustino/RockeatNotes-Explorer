@@ -47,15 +47,15 @@ export function New() {
       return alert("Digite o título da nota!");
     }
 
-    if (newTag) {
-      return alert(
-        "Você deixou uma tag sem adicionar! Adicione-a ou deixe o campo vazio."
-      );
-    }
-
     if (newLink) {
       return alert(
         "Você deixou um link sem adicionar! Adicione-o ou deixe o campo vazio."
+      );
+    }
+
+    if (newTag) {
+      return alert(
+        "Você deixou uma tag sem adicionar! Adicione-a ou deixe o campo vazio."
       );
     }
 
